@@ -1,0 +1,47 @@
+<!-- Profile card display reusable component -->
+
+<div class="container m-1">
+    <div class="card" style="width: 18rem; padding: 10px;border: 2px solid green;">
+      <div class="container">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="width: 250px;display: flex;justify-content: center;align-items: center;">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="1000">
+              <img [src]="profile.pic01" style="height: 300px;width: 100px;" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <img [src]="profile.pic02" style="height: 300px;width: 100px;" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    
+      <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <table class="mb-2">
+          <tr>
+              <td class="grey">DOB</td>
+              <td>{{dob}}</td>
+          </tr>
+          <tr>
+              <td class="grey">Job</td>
+              <td>{{job}}</td>
+          </tr>
+          <tr>
+              <td class="grey">Salary</td>
+              <td>{{salary}}</td>
+          </tr>
+        </table>
+        <div class="" style="display: flex;justify-content: space-between;align-items: center;">
+          <a [routerLink]="['/profile-detail',id]" routerLinkActive="router-link-active"  class="btn btn-primary" style="background-color: rgb(247, 196, 80);border: 0;">View more details</a>
+          
+            <i style="color: green;font-size: 1.2rem;cursor: pointer;" [ngClass]="favAvail?'bi bi-heart-fill':'bi bi-heart'" (click)="toggleFav()"></i>
+         
+         <!-- <i class="bi bi-heart-fill" style="font-size: 1.5rem;color: green;cursor: pointer;"  ></i> 
+         <i class="bi bi-heart" style="font-size: 1.5rem;color: green;cursor: pointer;"  (click)="addFav()"></i>  -->
+        </div>
+        
+      </div>
+    </div>
+  </div>

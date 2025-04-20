@@ -1,0 +1,39 @@
+<!-- Admin home content -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-admin-header></app-admin-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Home</li>
+          
+        </ol>
+      </nav>
+<main class="flex-fill">
+    <div class="container-fluid d-flex justify-content-center align-items-center" [ngStyle]="{
+      'background-image': 'url(../../../../assets//Images/carousal-2.jpg)',
+      'background-size': 'cover',
+      'background-position': 'center',
+      'height': '80vh',
+      'z-index':'1'
+    }">
+        <div class="container-fluid bg-cover d-flex justify-content-center align-items-center" style="background-image: url('path_to_your_image.jpg');">
+          <div class="text-white text-center p-4 bg-dark bg-opacity-50 rounded-3 w-100 w-sm-75 w-md-50">
+            <h1 class="intro-heading fw-bold">Welcome to Admin Dashboard</h1>
+            <p class="intro-text">
+              Manage users, review matches, approve profiles, and more!<br />
+              Take control of your platform and ensure a seamless experience for all users.
+            </p>
+            <a routerLink="/dashboard" class="btn btn-clr btn-lg mt-3">Go to Dashboard</a>
+          </div>
+        </div>
+        
+
+    </div>
+</main>
+
+<app-admin-footer></app-admin-footer>
+</div>
+
+
+
+

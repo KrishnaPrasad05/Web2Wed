@@ -1,0 +1,82 @@
+<!-- Profile search page for seamless user experience -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-user-header></app-user-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Profile search</li>
+      </ol>
+    </nav>
+    <main class="flex-fill">
+      <div class="container mt-3 mb-4">
+        <h3 class="mt-4 text-center mb-4"  style="color: green;">Perfect match, specially made for you </h3>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label for="exampleInputEmail1" class="form-label" style="word-spacing: 5px;font-size: 1.2rem;">Start searching profiles by matching name, religion or job</label>
+            </div>
+            <div class="col-12 col-md-6">
+              <input class="form-control" type="text"
+              placeholder="Search by name, religion or job"
+              [(ngModel)]="searchText"
+              (input)="onSearch()">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search by name, religion or job"
+            [(ngModel)]="searchText"
+            (input)="onSearch()"
+          />
+        </div> -->
+      
+      
+      <!-- <div class="container mt-2 mb-4">
+          <div class="row" >
+            <div >     
+             <div >
+                  <div class="col p-1"  style="display: flex;justify-content: center;align-items: center;">
+                    <app-profile-card [approval]="p.approval" [id]="p._id" [name]="p.name" [job]="p.job" [salary]="p.salary" [dob]="p.dob" ></app-profile-card>
+                  </div>        
+                </div>
+              </div>
+            </div>     
+          </div> -->
+      
+          <div class="container mt-3 mb-4" *ngIf="profiles.length > 0">
+           
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3 p-1" *ngFor="let p of profiles">
+                    <div>
+                        <app-profile-card [approval]="p.approval" [id]="p._id" [name]="p.name" [job]="p.job" [salary]="p.salary" [dob]="p.dob" ></app-profile-card>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    <app-user-footer></app-user-footer>
+  </div>
+  
+  
+  
+  
+    
+  <!--   <div *ngIf="profiles.length > 0" class="results">
+      <div *ngFor="let p of profiles" class="user-card">
+         <p><strong>Name:</strong> {{ p.name }}</p>
+        <p><strong>Religion:</strong> {{ p.religion }}</p>
+        <p><strong>Job:</strong> {{ p.job }}</p> 
+        <app-profile-card [approval]="p.approval" [id]="p._id" [name]="p.name" [job]="p.job" [salary]="p.salary" [dob]="p.dob" ></app-profile-card>
+      </div>
+    </div> -->
+    
+    <div *ngIf="profiles.length === 0">
+      <p>No users found.</p>
+    </div>
+  
+  

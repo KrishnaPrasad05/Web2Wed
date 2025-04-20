@@ -1,0 +1,120 @@
+<!-- Detailed display component of profile  -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-user-header></app-user-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+          <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/search-profile']" routerLinkActive="router-link-active" >Profile search</a></li>
+          <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Profile detail</li>
+        </ol>
+      </nav>
+    <main class="flex-fill">
+        <div class="container mt-4 mb-4" style="border: 2px solid green;border-radius: 15px;padding: 10px;">
+            <div class="row" style="background-color: rgb(247, 196, 80);border-radius: 10px;margin: 5px;padding: 3px;">
+                <h3 class="text-center text-white">{{profile.name}} <span style="font-size: 16px;">({{profile.gender}})</span> - {{profile._id}}</h3>
+            </div>
+            <div class="row">
+                <div class="col-12 col-xxl-4" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="width: 250px;display: flex;justify-content: center;align-items: center;">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active" data-bs-interval="1000">
+                            <img [src]="profile.pic01" style="height: 300px;width: 100px;" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item" data-bs-interval="2000">
+                            <img [src]="profile.pic02" style="height: 300px;width: 100px;" class="d-block w-100" alt="...">
+                          </div>
+                        </div>
+                        
+                      </div>
+                      
+                </div>
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="container">
+                                    <table class="table">
+                                        <tr>
+                                            <th scope="row">Dob & Birth time </th>
+                                            <td>{{profile.dob}} & {{profile.birthTime}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Education</th>
+                                            <td>{{profile.education}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Job</th>
+                                            <td>{{profile.job}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Salary</th>
+                                            <td>{{profile.salary}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Father name & Mother name</th>
+                                            <td>{{profile.fathersName}} & {{profile.mothersName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email & Phone</th>
+                                            <td>{{profile.email}} & {{profile.phone}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Marital status</th>
+                                            <td>{{profile.maritalStatus}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Siblings Marital status</th>
+                                            <td>{{profile.siblingMarriage}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Religion & Caste</th>
+                                            <td>{{profile.religion}} {{profile.caste}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Residential Address</th>
+                                            <td>{{profile.resiAddress}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Permanent Address</th>
+                                            <td>{{profile.perAddress}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Expectation</th>
+                                            <td>{{profile.expectation}}</td>
+                                        </tr>
+                                    </table>           
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <button class="btn btn-success" style="outline: 0;border: 0;" (click)="selectMatch()" >Request Profile</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Success !</h5>
+                  <button type="button" class="btn-close" (click)="closeModal()"></button>
+                </div>
+          
+                <div class="modal-body">
+                  Your request sent successfully.
+                </div>
+          
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+    </main>
+    <app-user-footer></app-user-footer>
+</div>

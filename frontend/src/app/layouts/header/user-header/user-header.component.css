@@ -1,0 +1,15 @@
+.bg-cover {
+    position: relative;
+    z-index: 1; /* Ensure the background stays behind */
+  }
+  
+  /* Modal */
+  .modal {
+    position: fixed; /* Keeps the modal in the same position on the screen */
+    z-index: 1050 !important; /* Bootstrap default z-index for modals */
+  }
+  
+  /* Modal Backdrop (This is the opacity overlay) */
+  .modal-backdrop {
+    z-index: 1040 !important; /* Ensure the backdrop is under the modal but above the background */
+  }

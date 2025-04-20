@@ -1,0 +1,43 @@
+<!-- Notification Page -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-user-header></app-user-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Notifications</li>
+        </ol>
+      </nav>
+    <main class="flex-fill">
+        <div class="container mt-3 mb-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4 class="text-center text-success">Your requested profiles</h4>
+                    <div class="alert alert-secondary mb-2" *ngFor="let r of requestMatch" role="alert"  style="display: flex;justify-content: space-between;align-items: center;">
+                        <div>
+                            <p>Requested Profile : {{r.matchUser}}</p>
+                            <p>Status : {{r.status}}</p> </div>
+                            <div>
+                            <button class="btn btn-primary me-3" [routerLink]="['/requested-profile',r.matchUser]" routerLinkActive="router-link-active">View</button>
+                            <button class="btn btn-danger" (click)="deleteMatches(r._id)">Delete</button>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="text-center text-success">Profiles waiting for your response</h4>
+                    <div class="alert alert-success mb-2" *ngFor="let r of waitingMatch" role="alert"   style="display: flex;justify-content: space-between;align-items: center;">
+                        <div>
+                            <p>Requester name : {{r.currentUser}}</p>
+                            <p>Waiting for your response...</p>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary me-3" [routerLink]="['/waiting-profile',r.currentUser]" [queryParams]="{matchId:r._id}" routerLinkActive="router-link-active">View</button>
+                                
+                            </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <app-user-footer></app-user-footer>
+</div>

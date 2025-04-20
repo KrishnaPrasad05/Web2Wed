@@ -1,0 +1,93 @@
+<!-- User Header content -->
+
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(253, 199, 99);">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-size: 1.2rems;"><i class="bi bi-globe" style="color: blue;"></i> <i class="bi bi-shuffle" style="color: black;"></i> <i class="bi bi-heart-fill" style="color: red;"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 1.2rem;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/search-profile']" routerLinkActive="router-link-active" >Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile']" routerLinkActive="router-link-active">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/fav']" routerLinkActive="router-link-active">Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/match-making']" routerLinkActive="router-link-active">Online Match Making</a>
+          </li>
+          
+          
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/notifications']" routerLinkActive="router-link-active" ><i class="bi bi-bell-fill" style="color: black;font-size: 1.3rem;"></i></a>
+          </li>
+         <!--  <sup> <span class="badge text-bg-secondary" style="width: 15px;height: 15px;text-align: center;padding: 2px;">4</span></sup>  -->
+          <li class="nav-item" style="display: flex;justify-content: center;align-items: center;">
+           <a class="nav-link" (click)="openModal()"  style="background-color: black;width: 25px;height: 25px;display: flex;justify-content: center;align-items: center;border-radius: 5px;cursor: pointer;"><i  class="bi bi-power" style="color: white;font-weight: 800;font-size: 1rem;"></i> </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- Trigger Button -->
+
+
+<!-- Modal -->
+<div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Logout</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        Are you sure you want to log out of your account?
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal Backdrop -->
+<div *ngIf="showModal" class="modal-backdrop fade show"></div>
+
+
+
+ <!--  <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Warning !</h5>
+          <button type="button" class="btn-close" ></button>
+        </div>
+  
+        <div class="modal-body">
+          Are you sure, you are logging out of your account.
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal1()">Logout</button>
+        </div>
+  
+      </div>
+    </div>
+  </div> -->

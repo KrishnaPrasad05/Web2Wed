@@ -1,0 +1,375 @@
+<!-- Horroscope match making page -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-user-header></app-user-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Match Maker</li>
+        </ol>
+      </nav>
+      <main class="flex-fill">
+        <div class="container mt-3 mb-4">
+      
+          <h3 class="text-center" style="color: green;">Online Match Maker</h3>
+          <form [formGroup]="matchForm" (ngSubmit)="submitForm()">
+            <div class="row">
+              <div class="col-md-6">
+                  <div class="m-1" style="border: 2px solid green;border-radius: 15px;padding: 5px;">
+                      <h4 style="background-color: rgb(247, 196, 100);padding: 10px;border-radius: 10px;color: white;">Male Details</h4>
+                      <div formGroupName="male" class="mb-3">
+                        <div class="container">
+                            <div class="row">
+                            <div class="mb-2 col-xxl-4" *ngFor="let field of ['year','month','date','hours','minutes','seconds','latitude','longitude','timezone']">
+                                <label class="form-label text-capitalize">{{ field }}</label>
+                                <input type="number" class="form-control" [formControlName]="field" [placeholder]="field" />
+                            </div>
+                        </div>
+                        <p class="text-secondary text-center">Click Auto detect location for latitude, longitude and timezone</p>
+                        </div>
+                      </div>
+                  </div>
+                
+              </div>
+        
+              <div class="col-md-6" >
+                  <div class="m-1" style="border: 2px solid green;border-radius: 15px;padding: 5px;">
+                      <h4 style="background-color: rgb(247, 196, 100);padding: 10px;border-radius: 10px;color: white;">Female Details</h4>
+                      <div formGroupName="female" class="mb-3">
+                        <div class="container">
+                            <div class="row">
+                            <div class="mb-2 col-xxl-4" *ngFor="let field of ['year','month','date','hours','minutes','seconds','latitude','longitude','timezone']">
+                                <label class="form-label text-capitalize">{{ field }}</label>
+                                <input type="number" class="form-control" [formControlName]="field" [placeholder]="field" />
+                            </div>
+                        </div>
+                        <p class="text-secondary text-center">Click Auto detect location for latitude, longitude and timezone</p>
+                        </div>
+                      </div>
+                  </div>
+                
+              </div>
+            </div>
+        
+            <div class="container m-1" style="border: 2px solid green;border-radius: 10px;">
+            <h4 style="background-color: rgb(161, 161, 161);padding: 10px;border-radius: 10px;color: white;margin-top: 10px;margin-bottom: 10px;">Configuration</h4>
+            <div formGroupName="config" class="mb-3 row">
+              <div class="col-md-4">
+                <label class="form-label">Observation Point</label>
+                <select class="form-select" formControlName="observation_point">
+                  <option value="topocentric">Topocentric</option>
+                  <option value="geocentric">Geocentric</option>
+                </select>
+              </div>
+        
+              <div class="col-md-4">
+                <label class="form-label">Language</label>
+                <select class="form-select" formControlName="language">
+                  <option value="en">English</option>
+                  <option value="hi">Hindi</option>
+                  <option value="te">Telugu</option>
+                </select>
+              </div>
+        
+              <div class="col-md-4">
+                <label class="form-label">Ayanamsha</label>
+                <select class="form-select" formControlName="ayanamsha">
+                  <option value="lahiri">Lahiri</option>
+                  <option value="krishnamurti">Krishnamurti</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        
+            <button class="btn btn-success m-2" type="submit">Submit</button>
+            <button class="btn btn-primary m-2" type="button" (click)="getLocation()">
+              Auto Detect Location
+            </button>
+          </form>
+        
+          <div *ngIf="result" class="mt-4">
+            <h5 class="text-center">Ashtakoot Match Result:</h5>
+          <!--   <pre>{{ result | json }}</pre> -->
+      
+          <div class="container">
+              <div class="row" style="display: flex;justify-content: center;align-items: center;">
+                  <div class="col-xxl-6">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                            <tr class="table-danger">
+                              <th scope="col">Category</th>
+                              <th scope="col">Total Score</th>
+                              <th scope="col">Score gained</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">Varna Kootam</th>
+                              <td>{{result.output.varna_kootam.out_of}}</td>
+                              <td>{{result.output.varna_kootam.score}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">vasya Kootam</th>
+                              <td >{{result.output.vasya_kootam.out_of}}</td>
+                              <td>{{result.output.vasya_kootam.score}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">tara Kootam</th>
+                              <td >{{result.output.tara_kootam.out_of}}</td>
+                              <td>{{result.output.tara_kootam.score}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">yoni Kootam</th>
+                              <td >{{result.output.yoni_kootam.out_of}}</td>
+                              <td>{{result.output.yoni_kootam.score}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">graha_maitri Kootam</th>
+                              <td >{{result.output.graha_maitri_kootam.out_of}}</td>
+                              <td>{{result.output.graha_maitri_kootam.score}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">gana Kootam</th>
+                              <td >{{result.output.gana_kootam.out_of}}</td>
+                              <td>{{result.output.gana_kootam.score}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">rasi Kootam</th>
+                              <td >{{result.output.rasi_kootam.out_of}}</td>
+                              <td>{{result.output.rasi_kootam.score}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">nadi Kootam</th>
+                              <td >{{result.output.nadi_kootam.out_of}}</td>
+                              <td>{{result.output.nadi_kootam.score}}</td>
+                            </tr>
+                            <tr class="table-success">
+                              <th scope="row">Overall</th>
+                             
+                              <td >{{result.output.out_of}}</td>
+                              <td>{{result.output.total_score}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+              </div>
+          </div>
+            
+            <div class="container">
+              <div class="row">
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Varna Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">Moon Sign Number</td>
+                                <td >{{result.output.varna_kootam.bride.moon_sign_number}}</td>
+                                <td >{{result.output.varna_kootam.groom.moon_sign_number}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Moon Sign</td>
+                                <td >{{result.output.varna_kootam.bride.moon_sign}}</td>
+                                <td >{{result.output.varna_kootam.groom.moon_sign}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Varnam</td>
+                                <td >{{result.output.varna_kootam.bride.varnam}}</td>
+                                <td >{{result.output.varna_kootam.groom.varnam}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Varnam Name</td>
+                                <td >{{result.output.varna_kootam.bride.varnam_name}}</td>
+                                <td >{{result.output.varna_kootam.groom.varnam_name}}</td>
+                              </tr>
+                      </table>
+                  </div>
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Graha Maitri Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">Moon Sign Number</td>
+                                <td >{{result.output.graha_maitri_kootam.bride.moon_sign_number}}</td>
+                                <td >{{result.output.graha_maitri_kootam.groom.moon_sign_number}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Moon Sign</td>
+                                <td >{{result.output.graha_maitri_kootam.bride.moon_sign}}</td>
+                                <td >{{result.output.graha_maitri_kootam.groom.moon_sign}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Moon Sign Lord</td>
+                                <td >{{result.output.graha_maitri_kootam.bride.moon_sign_lord}}</td>
+                                <td >{{result.output.graha_maitri_kootam.groom.moon_sign_lord}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Moon Sign Lord name</td>
+                                <td >{{result.output.graha_maitri_kootam.bride.moon_sign_lord_name}}</td>
+                                <td >{{result.output.graha_maitri_kootam.groom.moon_sign_lord_name}}</td>
+                              </tr>
+                            </tbody>
+                      </table>
+                  </div>
+                  
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Yoni Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">Star</td>
+                                <td >{{result.output.yoni_kootam.bride.star}}</td>
+                                <td >{{result.output.yoni_kootam.groom.star}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Yoni number</td>
+                                <td >{{result.output.yoni_kootam.bride.yoni_number}}</td>
+                                <td >{{result.output.yoni_kootam.groom.yoni_number}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Yoni</td>
+                                <td >{{result.output.yoni_kootam.bride.yoni}}</td>
+                                <td >{{result.output.yoni_kootam.groom.yoni}}</td>
+                              </tr>
+                            </tbody>
+                      </table>
+                  </div>
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Vasya Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">Kootam</td>
+                                <td >{{result.output.vasya_kootam.bride.bride_kootam}}</td>
+                                <td >{{result.output.vasya_kootam.groom.groom_kootam}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Kootam name</td>
+                                <td >{{result.output.vasya_kootam.bride.bride_kootam_name}}</td>
+                                <td >{{result.output.vasya_kootam.groom.groom_kootam_name}}</td>
+                              </tr>
+                            </tbody>
+                      </table>
+                  </div>
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Tara Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">Star Number</td>
+                                <td >{{result.output.tara_kootam.bride.star_number}}</td>
+                                <td >{{result.output.tara_kootam.groom.star_number}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Star Name</td>
+                                <td >{{result.output.tara_kootam.bride.star_name}}</td>
+                                <td >{{result.output.tara_kootam.groom.star_name}}</td>
+                              </tr>
+                            </tbody>
+                      </table>
+                  </div>
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Gana Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">Bride nadi</td>
+                                <td >{{result.output.gana_kootam.bride.bride_nadi}}</td>
+                                <td >{{result.output.gana_kootam.groom.groom_nadi}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Nadi Name</td>
+                                <td >{{result.output.gana_kootam.bride.bride_nadi_name}}</td>
+                                <td >{{result.output.gana_kootam.groom.groom_nadi_name}}</td>
+                              </tr>
+                            </tbody>
+                      </table>
+                  </div>
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Rasi Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                  <td scope="row">Moon Sign</td>
+                                  <td >{{result.output.rasi_kootam.bride.moon_sign}}</td>
+                                  <td >{{result.output.rasi_kootam.groom.moon_sign}}</td>
+                                </tr>
+                                <tr>
+                                  <td scope="row">Moon Sign Name</td>
+                                  <td >{{result.output.rasi_kootam.bride.moon_sign_name}}</td>
+                                  <td >{{result.output.rasi_kootam.groom.moon_sign_name}}</td>
+                                </tr>
+                            </tbody>
+                      </table>
+                  </div>
+                  <div class="col-xxl-4">
+                      <table class="table table-bordered  table-responsive">
+                          <thead>
+                              <tr class="table-secondary">
+                                <th scope="col">Nadi Kootam</th>
+                                <th scope="col">Bride</th>
+                                <th scope="col">Groom</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td scope="row">Nadi</td>
+                                <td >{{result.output.nadi_kootam.bride.nadi}}</td>
+                                <td >{{result.output.nadi_kootam.groom.nadi}}</td>
+                              </tr>
+                              <tr>
+                                <td scope="row">Nadi Name</td>
+                                <td >{{result.output.nadi_kootam.bride.nadi_name}}</td>
+                                <td >{{result.output.nadi_kootam.groom.nadi_name}}</td>
+                              </tr>
+                            </tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <app-user-footer></app-user-footer>
+  </div>

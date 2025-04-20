@@ -1,0 +1,152 @@
+<!-- Form used to update current user profile details -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-user-header></app-user-header>
+    <main class="flex-fill">
+        <h3 class="text-center m-3">Build your profile to get suitable match for your soul</h3>
+        <div class="container p-1" style="border: 2px solid green;border-radius: 15px;margin-top: 1rem;box-shadow: 5px 5px 5px grey;">
+            
+            <div class="container mb-2 mt-2">
+                <nav class="nav nav-pills flex-column flex-sm-row">
+                    <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" [ngStyle]="{'background-color': active1 ? 'rgb(247, 196, 80)':'white','color':active1?'white':'black','cursor':'pointer'}" (click)="showForm2()">Form Detail - 1</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" (click)="showForm1()" [ngStyle]="{'background-color': active2 ? 'rgb(247, 196, 80)':'white','color':active2?'white':'black','cursor':'pointer'}">Form Detail - 2</a>
+                  </nav>
+            </div>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="container" [ngStyle]="{'display': formBool1? 'block': 'none'}" >
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <div class="mb-3">
+                            <label formControlName="firstName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="name">
+                            <small class="text-danger" *ngIf="userForm.controls['name'].touched && userForm.controls['name'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Birth time</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="birthTime">
+                            <small class="text-danger" *ngIf="userForm.controls['birthTime'].touched && userForm.controls['birthTime'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Fathers Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="fathersName">
+                            <small class="text-danger" *ngIf="userForm.controls['fathersName'].touched && userForm.controls['fathersName'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="email">
+                            <small class="text-danger" *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">House</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="house">
+                            <small class="text-danger" *ngIf="userForm.controls['house'].touched && userForm.controls['house'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Sibling's Marital status</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="siblingMarriage">
+                            <small class="text-danger" *ngIf="userForm.controls['siblingMarriage'].touched && userForm.controls['siblingMarriage'].errors?.['required']">First Name is required</small>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">DOB</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="dob">
+                            <small class="text-danger" *ngIf="userForm.controls['dob'].touched && userForm.controls['dob'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Gender</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="gender">
+                            <small class="text-danger" *ngIf="userForm.controls['gender'].touched && userForm.controls['gender'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Educational Status</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="education">
+                            <small class="text-danger" *ngIf="userForm.controls['education'].touched && userForm.controls['education'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Mothers Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="mothersName">
+                            <small class="text-danger" *ngIf="userForm.controls['mothersName'].touched && userForm.controls['mothersName'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Phone number</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="phone">
+                            <small class="text-danger" *ngIf="userForm.controls['phone'].touched && userForm.controls['phone'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Marital status</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="maritalStatus">
+                            <small class="text-danger" *ngIf="userForm.controls['maritalStatus'].touched && userForm.controls['maritalStatus'].errors?.['required']">First Name is required</small>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container" [ngStyle]="{'display': formBool2 ?'block': 'none'}">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Residential Address</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="resiAddress"></textarea>
+                            <small class="text-danger" *ngIf="userForm.controls['resiAddress'].touched && userForm.controls['resiAddress'].errors?.['required']">First Name is required</small>
+                          </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Religion</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="religion">
+                            <small class="text-danger" *ngIf="userForm.controls['religion'].touched && userForm.controls['religion'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Job</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="job">
+                            <small class="text-danger" *ngIf="userForm.controls['job'].touched && userForm.controls['job'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Salary</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="salary">
+                            <small class="text-danger" *ngIf="userForm.controls['salary'].touched && userForm.controls['salary'].errors?.['required']">First Name is required</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Expectation</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="expectation">
+                            <small class="text-danger" *ngIf="userForm.controls['expectation'].touched && userForm.controls['expectation'].errors?.['required']">First Name is required</small>
+                        </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Permanent Address</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="perAddress"></textarea>
+                                <small class="text-danger" *ngIf="userForm.controls['perAddress'].touched && userForm.controls['perAddress'].errors?.['required']">First Name is required</small>
+                              </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Caste</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="caste">
+                                <small class="text-danger" *ngIf="userForm.controls['caste'].touched && userForm.controls['caste'].errors?.['required']">First Name is required</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Picture 01</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="pic01">
+                                <small class="text-danger" *ngIf="userForm.controls['pic01'].touched && userForm.controls['pic01'].errors?.['required']">First Name is required</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Picture 02</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="pic02">
+                                <small class="text-danger" *ngIf="userForm.controls['pic02'].touched && userForm.controls['pic02'].errors?.['required']">First Name is required</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Jadhagam PDF</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="jadhagam">
+                                <small class="text-danger" *ngIf="userForm.controls['jadhagam'].touched && userForm.controls['jadhagam'].errors?.['required']">First Name is required</small>
+                            </div>
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                        <button class="btn btn-success" style="width: 150px;" type="submit">Submit</button>
+                    </div>
+                   
+                </div>
+            </div>
+        </form>
+        </div>
+    </main>
+    <app-user-footer></app-user-footer>
+</div>

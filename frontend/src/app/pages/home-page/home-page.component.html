@@ -1,0 +1,32 @@
+<!-- Landing page of User -->
+
+<div class="d-flex flex-column min-vh-100">
+    <div style="position: fixed;width: 100%;z-index: 1000;">
+      <app-user-header></app-user-header>
+      <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" style="color: rgb(108, 106, 106);" aria-current="page">Home</li>
+          </ol>
+        </nav>
+    </div>
+      
+      <main class="flex-fill">
+  
+        <app-open-page></app-open-page>
+        <section id="about">
+          <app-about-us></app-about-us>
+        </section>
+          
+          <app-profile-intro></app-profile-intro>
+          <app-feedback></app-feedback>
+          <section id="contact">
+            <app-contact-us></app-contact-us>
+          </section>
+          <section id="report">
+            <app-report-us></app-report-us>
+          </section>
+          
+          
+      </main>
+      <app-user-footer></app-user-footer>
+  </div>

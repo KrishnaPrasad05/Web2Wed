@@ -1,0 +1,160 @@
+<!-- Profile approval status page -->
+
+
+<!-- Navigation Tabs -->
+<div class="d-flex flex-column min-vh-100">
+    <app-admin-header></app-admin-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/admin-home']" routerLinkActive="router-link-active" >Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Profile Status</li>
+      </ol>
+    </nav>
+    <main class="flex-fill">
+      <div class="container">
+        <div style="background-color: rgb(218, 218, 218);padding: 10px;border-top-left-radius: 15px;border-top-right-radius: 15px;margin-top: 2rem;">
+          <ul class="nav text-dark nav-pills nav-fill mt-1 mb-1">
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="selectedTab === 'approved'" (click)="selectedTab = 'approved'">
+                Approved
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="selectedTab === 'pending'" (click)="selectedTab = 'pending'">
+                Pending
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" [class.active]="selectedTab === 'rejected'" (click)="selectedTab = 'rejected'">
+                Rejected
+              </button>
+            </li>
+          </ul>
+        </div>
+        
+        <div >
+      
+       
+        <!-- Approved List -->
+        <div *ngIf="selectedTab === 'approved'">
+          <div class="table-responsive">
+            <div  
+            
+            >
+        <!--  <p></p>
+         <p>{{ p.job }}</p>
+         <p>{{ p.salary }}</p> -->
+         <table class="table table-bordered table-hover" >
+           <thead>
+             <tr>
+               <th scope="col">S.No</th>
+               <th scope="col">Id</th>
+               <th scope="col">Name</th>
+               <th scope="col">DOB</th>
+               <th scope="col">Email</th>
+               <th scope="col">Phone</th>
+               <th scope="col">Action</th>
+             </tr>
+           </thead>
+           <tbody *ngFor="let p of profile;let i=index">
+             <tr>
+               <td scope="row">{{ i+1 }}</td>
+               <td>{{ p._id }}</td>
+               <td>{{ p.name }}</td>
+               <td>{{ p.dob }}</td>
+               <td>{{ p.email }}</td>
+               <td>{{ p.phone }}</td>
+               <td style="display: flex;justify-content: center;align-items: center;"><a [routerLink]="['/profile-list-display', p._id]" routerLinkActive="router-link-active"><i class="bi bi-eye-fill" style="background-color: green; padding: 5px; border-radius: 5px; margin-right: 5px; color: white;"></i></a></td>
+             </tr>
+             
+           </tbody>
+         </table>
+       </div>
+          </div>
+  
+         
+          
+         
+        </div>
+        
+        <!-- Pending List -->
+        <div *ngIf="selectedTab === 'pending'">
+          
+          <div class="table-responsive">
+            <div  
+            
+            >
+         <table class="table table-bordered table-hover" >
+           <thead>
+             <tr>
+               <th scope="col">S.No</th>
+               <th scope="col">Id</th>
+               <th scope="col">Name</th>
+               <th scope="col">DOB</th>
+               <th scope="col">Email</th>
+               <th scope="col">Phone</th>
+               <th scope="col">Action</th>
+             </tr>
+           </thead>
+           <tbody *ngFor="let p of profilePen;let i=index">
+             <tr>
+               <td scope="row">{{ i+1 }}</td>
+               <td>{{ p._id }}</td>
+               <td>{{ p.name }}</td>
+               <td>{{ p.dob }}</td>
+               <td>{{ p.email }}</td>
+               <td>{{ p.phone }}</td>
+               <td style="display: flex;justify-content: center;align-items: center;"><a [routerLink]="['/profile-list-display', p._id]" routerLinkActive="router-link-active"><i class="bi bi-eye-fill" style="background-color: green; padding: 5px; border-radius: 5px; margin-right: 5px; color: white;"></i></a></td>
+             </tr>
+             
+           </tbody>
+         </table>
+       </div>
+          </div>
+        </div>
+        
+        <!-- Rejected List -->
+         <div *ngIf="selectedTab === 'rejected'">
+          
+          <div class="table-responsive">
+            <div  
+            
+            >
+         <table class="table table-bordered table-hover" >
+           <thead>
+             <tr>
+               <th scope="col">S.No</th>
+               <th scope="col">Id</th>
+               <th scope="col">Name</th>
+               <th scope="col">DOB</th>
+               <th scope="col">Email</th>
+               <th scope="col">Phone</th>
+               <th scope="col">Action</th>
+             </tr>
+           </thead>
+           <tbody *ngFor="let p of profileRej;let i=index">
+             <tr>
+               <td scope="row">{{ i+1 }}</td>
+               <td>{{ p._id }}</td>
+               <td>{{ p.name }}</td>
+               <td>{{ p.dob }}</td>
+               <td>{{ p.email }}</td>
+               <td>{{ p.phone }}</td>
+               <td style="display: flex;justify-content: center;align-items: center;"><a [routerLink]="['/profile-list-display', p._id]" routerLinkActive="router-link-active"><i class="bi bi-eye-fill" style="background-color: green; padding: 5px; border-radius: 5px; margin-right: 5px; color: white;"></i></a></td>
+             </tr>
+             
+           </tbody>
+         </table>
+       </div>
+          </div>
+        </div>
+      </div>
+      </div>
+     
+    </main>
+   
+  
+  
+  
+  <app-admin-footer></app-admin-footer>
+  </div>

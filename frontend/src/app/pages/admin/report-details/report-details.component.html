@@ -1,0 +1,57 @@
+<!-- Display of reports us page  -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-admin-header></app-admin-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/admin-home']" routerLinkActive="router-link-active" >Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Report us query</li>
+      </ol>
+    </nav>
+    <main class="flex-fill">
+      <div class="container">
+        <div class="table-responsive p-3">
+          <!-- <div class="row">
+              <div class="col p-2" *ngFor="let c of report">
+                  <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">{{c.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">{{c.email}}</h6>
+                        <p class="card-text">{{c.details}}</p>
+                        <button class="btn btn-success" (click)="deleteReport(c._id)">Delete</button>
+                      </div>
+                    </div>
+              </div>
+          </div> -->
+          <h4 class="text-center">Reported Us Details</h4>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th class="text-center">S.No</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Details</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let c of report;let i=index">
+               <tr>
+                 <td>{{i+1}}</td>
+                 <td>{{c.name}}</td>
+                 <td>{{c.email}}</td>
+                 <td>{{c.details}}</td>
+                 <td class="text-center"><button class="btn btn-success" (click)="deleteReport(c._id)">Delete</button></td>
+               </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </main>
+  
+  
+  
+  
+  
+  <app-admin-footer></app-admin-footer>
+  </div>

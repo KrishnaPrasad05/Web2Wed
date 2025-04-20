@@ -1,0 +1,84 @@
+<!-- User registration page -->
+
+<div class="d-flex flex-column min-vh-100">
+    <app-land-header></app-land-header>
+    <main class="flex-fill">
+      <div class="container mt-3">
+        <div class="row" style="display: flex;justify-content: center;align-items: center;padding: 20px;">
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4" style="background-color: rgb(247, 196, 100);padding: 50px;border-radius: 10px;">
+                <div class="">
+                <img class="img-responsive" src="../register-now/../../../assets/Images/wedding01.png" class="d-block w-100" alt="...">
+            </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 col-xl-4 col-xxl-4" >
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-1">
+                        <label for="exampleFormControlInput1" class="form-label">Name</label>
+                        <input type="text" formControlName="name" class="form-control" style="background-color: rgb(232, 232, 232);" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <small class="text-danger" *ngIf="userForm.controls['name'].touched && userForm.controls['name'].errors?.['required']">Name is required</small>
+                      </div>
+                      <div class="mb-1">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="text" class="form-control" formControlName="email" style="background-color: rgb(232, 232, 232);" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <small class="text-danger" *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors?.['required']">Email is required</small>
+                      </div>
+                      <div class="mb-1">
+                        <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" formControlName="phone" style="background-color: rgb(232, 232, 232);" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <small class="text-danger" *ngIf="userForm.controls['phone'].touched && userForm.controls['phone'].errors?.['required']">Phone is required</small>
+                      </div>
+                      <div class="mb-1">
+                        <label for="exampleFormControlInput1" class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password" style="background-color: rgb(232, 232, 232);" id="exampleFormControlInput1" placeholder="name@example.com">.
+                        <small class="text-danger" *ngIf="userForm.controls['password'].touched && userForm.controls['password'].errors?.['required']">Password is required</small>
+                      </div>
+                      <button type="submit" class="btn btn-success mt-2">Register now!</button>
+                      <p>Already part of our family, <a [routerLink]="['/']" routerLinkActive="router-link-active"  style="color: orange;padding: 5px;font-size: 1.2rem;">Login now!</a> </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Warning !</h5>
+            <button type="button" class="btn-close" (click)="closeModal()"></button>
+          </div>
+    
+          <div class="modal-body">
+            Please fill all the required fields.
+          </div>
+    
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"  >Close</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Success !</h5>
+            <button type="button" class="btn-close" (click)="closeSuccessModal()"></button>
+          </div>
+    
+          <div class="modal-body">
+            You are successfully registered.
+          </div>
+    
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="closeSuccessModal1()"> login</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    </main>
+    <app-land-footer></app-land-footer>
+  </div>

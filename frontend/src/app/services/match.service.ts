@@ -11,10 +11,10 @@ export class MatchService {
 
   constructor(private http:HttpClient) { }
 
-  private url="http://localhost:3000/api/match" //server link for match profile
-  private url1="http://localhost:3000/api/requested-match" //server link for requested match profile
-  private url2="http://localhost:3000/api/waiting-match" //server link for waiting match 
-  private url3="http://localhost:3000/api/waiting-profile" //server link for waiting profile
+  private url="https://web2wed.onrender.com/api/match" //server link for match profile
+  private url1="https://web2wed.onrender.com/api/requested-match" //server link for requested match profile
+  private url2="https://web2wed.onrender.com/api/waiting-match" //server link for waiting match 
+  private url3="https://web2wed.onrender.com/api/waiting-profile" //server link for waiting profile
 
   //Adding match profile
   addMatch(data:any):Observable<Match>{

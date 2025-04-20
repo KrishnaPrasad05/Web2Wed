@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
   
-    private url="http://localhost:3000/api/user" //Server link for user details
+    private url="https://web2wed.onrender.com/api/user" //Server link for user details
     
     //Adding users
     addUsers(data:any):Observable<User[]>{

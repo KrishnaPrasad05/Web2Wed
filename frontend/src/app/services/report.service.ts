@@ -9,7 +9,7 @@ export class ReportService {
 
   constructor(private http:HttpClient) { }
 
-  private url="http://localhost:3000/api/report" //server link for report us details
+  private url="https://web2wed.onrender.com/api/report" //server link for report us details
 
   //Adding report us details
   addReports(data:any):Observable<Report[]>{

@@ -10,7 +10,7 @@ export class FavoriteService {
 
   constructor(private http:HttpClient) { }
 
-  private url="http://localhost:3000/api/fav" //server link for favorite profiles
+  private url="https://web2wed.onrender.com/api/fav" //server link for favorite profiles
 
   //Fetching favorite profiles based on ID
   getFavorites(id:any):Observable<Favorites[]>{

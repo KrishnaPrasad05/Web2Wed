@@ -10,7 +10,7 @@ export class ContactService {
 
   constructor(private http:HttpClient) { }
 
-  private url="http://localhost:3000/api/contact" //server link for contact us details
+  private url="https://web2wed.onrender.com/api/contact" //server link for contact us details
 
   //Adding contacts
   addContacts(data:any):Observable<Contact[]>{

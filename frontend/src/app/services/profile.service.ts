@@ -10,11 +10,11 @@ export class ProfileService {
 
   constructor(private http:HttpClient) { }
 
-  private url="http://localhost:3000/api/profile" //server link for profile
-  private url1="http://localhost:3000/api/current-profile" //server link for current profile
-  private url2="http://localhost:3000/api/profile-approved" //server link for current profile
-  private url3="http://localhost:3000/api/profile-rejected" //server link for current profile
-  private url4="http://localhost:3000/api/profile-pending" //server link for current profile
+  private url="https://web2wed.onrender.com/api/profile" //server link for profile
+  private url1="https://web2wed.onrender.com/api/current-profile" //server link for current profile
+  private url2="https://web2wed.onrender.com/api/profile-approved" //server link for current profile
+  private url3="https://web2wed.onrender.com/api/profile-rejected" //server link for current profile
+  private url4="https://web2wed.onrender.com/api/profile-pending" //server link for current profile
 
   //Adding profile
   addProfiles(data:any):Observable<Profile[]>{

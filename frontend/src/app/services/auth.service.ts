@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private route:Router,private http:HttpClient) { }
 
-  private url='http://localhost:3000/api/login' //server url for login authentication
+  private url='https://web2wed.onrender.com/api/login' //server url for login authentication
 
 
   //Authenticating user

@@ -58,6 +58,9 @@
                 
             </div>
         </div>
+        <div *ngIf="profiles.length === 0">
+          <p>Please wait while profiles being loaded !</p>
+        </div>
     </main>
     <app-user-footer></app-user-footer>
   </div>
@@ -75,8 +78,6 @@
       </div>
     </div> -->
     
-    <div *ngIf="profiles.length === 0">
-      <p>No users found.</p>
-    </div>
+   
   
   

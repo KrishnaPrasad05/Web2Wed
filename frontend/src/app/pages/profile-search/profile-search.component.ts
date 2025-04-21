@@ -22,7 +22,7 @@ export class ProfileSearchComponent implements OnInit{
 
     const params = new HttpParams().set('q', query);
 
-    this.http.get<any[]>('http://localhost:3000/api/profile/search', { params })
+    this.http.get<any[]>('https://web2wed.onrender.com/api/profile/search', { params })
       .subscribe(data => {
         this.profiles = data;
       });

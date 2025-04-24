@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { RegisterNowComponent } from './pages/register-now/register-now.component';
+
+
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ProfileFormComponent } from './forms/profile-form/profile-form.component';
 import { CurrentProfileComponent } from './pages/current-profile/current-profile.component';
@@ -23,6 +23,8 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { ProfileListComponent } from './pages/admin/profile-list/profile-list.component';
 import { ProfileListDisplayComponent } from './pages/admin/profile-list-display/profile-list-display.component';
 import { AuthGuard } from './guards/auth.guard';
+import { LoginPageComponent } from './forms/login-page/login-page.component';
+import { RegisterNowComponent } from './forms/register-now/register-now.component';
 
 const routes: Routes = [
   {path:'',component:LoginPageComponent},

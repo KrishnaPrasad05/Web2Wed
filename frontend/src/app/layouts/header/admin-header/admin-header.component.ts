@@ -10,6 +10,10 @@ export class AdminHeaderComponent {
   constructor(private router:Router){}
   showModal = false;
 
+  isActive(route:string):boolean{
+    return this.router.url===route;
+  }
+  
   openModal() {
     this.showModal = true;
   }

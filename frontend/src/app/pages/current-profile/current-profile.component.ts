@@ -12,7 +12,18 @@ export class CurrentProfileComponent implements OnInit{
   profile:any;
   email:any;
   phone:any;
+  showModal = false;
   constructor(private ts:ProfileService,private router:Router){}
+  
+    
+    openModal() {
+      this.showModal = true;
+    }
+  
+    closeModal() {
+      this.showModal = false;
+    }
+  
   
   ngOnInit(): void {
     //immediate execution

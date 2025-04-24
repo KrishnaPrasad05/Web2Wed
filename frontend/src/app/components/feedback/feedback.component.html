@@ -3,182 +3,26 @@
 <div class="container">
     <h3 class="text-center mt-4 mb-4" style="color: orange;">Our happy families.....</h3>
     <div class="row mb-2">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
+        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" *ngFor="let f of feedback">
             <div style="border: 2px solid green;border-radius: 10px;">
             <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
                 <div style="display: flex;justify-content: center;align-items: center;">
                     <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Ravi</h5>
+                    <h5 class="mt-2 ms-2">{{f.name}}</h5>
                 </div>
                 <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
+                        <i class="bi bi-star-fill" style="color: orange;" *ngFor="let s of [].constructor(f.star)"></i> 
+                        <i class="bi bi-star" style="color: orange;" *ngFor="let s of [].constructor(5 - f.star)"></i> 
                 </div>
             </div>
-            <p class="p-1"> The profile builder guided me step by step, helping me express my true self. It felt natural and honest, and it led me to matches who actually shared my values and aligned with what I’m looking for.</p>
+            <p class="p-1">{{f.message}}</p>
         </div>
     </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Kumari</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-half" style="color: orange;"></i>  
-                </div>
-            </div>
-            <p class="p-1">I loved how the builder captured every aspect of who I am—interests, lifestyle, and goals. The matches I received were thoughtful, relevant, and aligned with what I’m looking for.</p>
-        </div>
+       
     </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Sabari</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>   
-                </div>
-            </div>
-            <p class="p-1">Unlike other platforms, this site’s profile builder dives deep. It asked meaningful questions, which made my profile stand out and attracted people who genuinely understood what I wanted in a partner.</p>
-        </div>
-    </div>
-    </div>
-    <div class="row mb-2">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Ashok</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-half" style="color: orange;"></i>  
-                </div>
-            </div>
-            <p class="p-1">Creating my profile was smooth and surprisingly fun. The prompts helped me reflect on what truly matters. Because of this,aligned with what I’m looking for and I found someone who values the same things I do.</p>
-        </div>
-    </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Mohammad</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-half" style="color: orange;"></i>  
-                </div>
-            </div>
-            <p class="p-1"> I was amazed by how accurate the matching was. The builder collected just the right details,and aligned with what I’m looking for and it honestly felt like the platform knew exactly who would be a good fit.
-            </p>
-        </div>
-    </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Joseph</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                </div>
-            </div>
-            <p class="p-1">The feature helped me present myself clearly and authentically. It wasn’t just about looks or basics—it was about personality, values, and compatibility.  That made all the difference for me.</p>
-        </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">John</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                     
-                </div>
-            </div>
-            <p class="p-1">Filling out the profile builder felt personal and thoughtful, not like a boring form. It asked the right questions,and aligned with what I’m looking for and the matches I received reflected the real me.</p>
-        </div>
-    </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Begum</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-half" style="color: orange;"></i>  
-                </div>
-            </div>
-            <p class="p-1"> I appreciate how the builder focused on compatibility over surface-level details. It helped me connect with someone who truly understands me and wants the same future I envision.</p>
-        </div>
-    </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-2" >
-            <div style="border: 2px solid green;border-radius: 10px;">
-
-           
-            <div style="display: flex;justify-content: space-between;align-items: center;background-color: rgb(174, 236, 174);border-radius: 10px;">
-                <div style="display: flex;justify-content: center;align-items: center;">
-                    <i class="bi bi-person-circle ms-1" style="color: rgb(109, 108, 108);"></i>
-                    <h5 class="mt-2 ms-2">Dinesh</h5>
-                </div>
-                <div style="display: flex;justify-content: center;align-items: center;margin-right: 10px;">
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                    <i class="bi bi-star-fill" style="color: orange;"></i>  
-                     
-                </div>
-            </div>
-            <p class="p-1">From photos to preferences, the profile builder let me customize everything. It really brought out my personality, and I believe that’s why I found someone who matched perfectly.</p>
-        </div>
-    </div>
-    </div>
+    
 </div>
+
 
 
 

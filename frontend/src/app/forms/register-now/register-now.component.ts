@@ -8,7 +8,9 @@ declare var bootstrap:any;
   templateUrl: './register-now.component.html',
   styleUrls: ['./register-now.component.css']
 })
+
 export class RegisterNowComponent implements AfterViewInit{
+  showPassword=false;
   userForm  :FormGroup;
   modal: any;
   successModal: any;
@@ -26,11 +28,16 @@ export class RegisterNowComponent implements AfterViewInit{
   constructor(private fb:FormBuilder,private ts:UserService,private router:Router){
     this.userForm=this.fb.group({
       name:['',[Validators.required]],
-      email:['',[Validators.required]],
+      email:['',[Validators.required,Validators.email]],
       phone:['',[Validators.required]],
-      password:['',[Validators.required]]
+      password:['',[Validators.required,Validators.minLength(6)]]
     })
   }
+  
+  togglePasswordVisibility(){
+    this.showPassword=!this.showPassword
+  }
+  
   onSubmit(){
     //adds user data
     if(this.userForm.valid){
@@ -51,6 +58,7 @@ export class RegisterNowComponent implements AfterViewInit{
       this.userForm.markAllAsTouched()
       this.openModal()
     }
+    
   }
   openModal() {
     if (this.modal) {

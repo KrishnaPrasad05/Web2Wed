@@ -25,8 +25,8 @@ export class ContactUsComponent implements AfterViewInit{
   constructor(private fb:FormBuilder,private ts:ContactService){
     this.contactForm=this.fb.group({
       name:['',[Validators.required]],
-      email:['',[Validators.required]],
-      details:['',[Validators.required]]
+      email:['',[Validators.required,Validators.email]],
+      details:['',[Validators.required,Validators.maxLength(150)]]
     })
   }
   onSubmit(){

@@ -11,6 +11,9 @@ export class UserHeaderComponent {
   constructor(private ts:AuthService,private router:Router){}
   showModal = false;
 
+  isActive(route:string):boolean{
+    return this.router.url===route;
+  }
   openModal() {
     this.showModal = true;
   }

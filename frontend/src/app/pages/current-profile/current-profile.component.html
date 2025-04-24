@@ -9,8 +9,8 @@
         </ol>
       </nav>
     <main class="flex-fill">
-        <div class="alert alert-secondary m-3" role="alert" style="background-color: rgb(202, 241, 202);">
-            No Profile, Create a new One - <a [routerLink]="['/form']" routerLinkActive="router-link-active" >Profile Builder</a> 
+        <div class="alert alert-secondary m-3" role="alert" style="background-color: rgb(202, 241, 202);color: rgb(118, 117, 117);">
+            No Profile, Create a new One - <a [routerLink]="['/form']" routerLinkActive="router-link-active" style="color: black;" >click here</a> to create a new one
           </div>
         
         <div class="container mt-4 mb-4" style="border: 2px solid green;border-radius: 15px;padding: 10px;">
@@ -47,12 +47,12 @@
                                             <td>{{profile.education}}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Job</th>
-                                            <td>{{profile.job}}</td>
+                                            <th scope="row">Job & Salary</th>
+                                            <td>{{profile.job}} & {{profile.salary}}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Salary</th>
-                                            <td>{{profile.salary}}</td>
+                                            <th scope="row">House type</th>
+                                            <td>{{profile.house}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Father name & Mother name</th>
@@ -92,7 +92,32 @@
                         </div>
                        <div class="container">
                             <button class="btn btn-success me-3" style="outline: 0;border: 0;" (click)="updateProfile(profile._id)" >Update Profile</button>
-                            <button class="btn btn-danger" style="outline: 0;border: 0;" (click)="deleteProfile(profile._id)" >Delete Profile</button>
+                            <button class="btn btn-danger" style="outline: 0;border: 0;" (click)="openModal()" >Delete Profile</button>
+                              <!-- Modal -->
+  <div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Deletion</h5>
+          <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body">
+          Are you sure you want to delete your profile?
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="deleteProfile(profile._id)">Logout</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Backdrop -->
+  <div *ngIf="showModal" class="modal-backdrop fade show"></div>
                         </div>
                         
                     </div>
@@ -102,3 +127,10 @@
     </main>
     <app-user-footer></app-user-footer>
 </div>
+
+
+
+
+
+
+

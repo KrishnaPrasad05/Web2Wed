@@ -2,9 +2,15 @@
 
 <div class="d-flex flex-column min-vh-100">
     <app-user-header></app-user-header>
+    <nav aria-label="breadcrumb" style="background-color: rgb(230, 230, 230);height: 27px;">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page" style="color: rgb(108, 106, 106);">Profile builder</li>
+        </ol>
+      </nav>
     <main class="flex-fill">
-        <h3 class="text-center m-3">Build your profile to get suitable match for your soul</h3>
-        <div class="container p-1" style="border: 2px solid green;border-radius: 15px;margin-top: 1rem;box-shadow: 5px 5px 5px grey;">
+        <h3 class="text-center m-3 text-success">Build your profile to get suitable match for your soul</h3>
+        <div class="container mb-5" style="border: 2px solid green;border-radius: 15px;margin-top: 1rem;box-shadow: 5px 5px 10px grey;">
             
             <div class="container mb-2 mt-2">
                 <nav class="nav nav-pills flex-column flex-sm-row">
@@ -18,65 +24,83 @@
                     <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                         <div class="mb-3">
                             <label formControlName="firstName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="name">
-                            <small class="text-danger" *ngIf="userForm.controls['name'].touched && userForm.controls['name'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your name" type="text" class="form-control" id="exampleInputEmail1" formControlName="name" >
+                            <small class="text-danger" *ngIf="userForm.controls['name'].touched && userForm.controls['name'].errors?.['required']">Name is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['name'].touched && userForm.controls['name'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Birth time</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="birthTime">
-                            <small class="text-danger" *ngIf="userForm.controls['birthTime'].touched && userForm.controls['birthTime'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your birth time" type="text" class="form-control" id="exampleInputEmail1" formControlName="birthTime">
+                            <small class="text-danger" *ngIf="userForm.controls['birthTime'].touched && userForm.controls['birthTime'].errors?.['required']">Birth time is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['birthTime'].touched && userForm.controls['birthTime'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Fathers Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="fathersName">
-                            <small class="text-danger" *ngIf="userForm.controls['fathersName'].touched && userForm.controls['fathersName'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your father's name" type="text" class="form-control" id="exampleInputEmail1" formControlName="fathersName">
+                            <small class="text-danger" *ngIf="userForm.controls['fathersName'].touched && userForm.controls['fathersName'].errors?.['required']">Father's Name is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['fathersName'].touched && userForm.controls['fathersName'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="email">
-                            <small class="text-danger" *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your email" type="text" class="form-control" id="exampleInputEmail1" formControlName="email">
+                            <small class="text-danger" *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors?.['required']">Email is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors?.['email']">Email must be in valid format</small>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">House</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="house">
-                            <small class="text-danger" *ngIf="userForm.controls['house'].touched && userForm.controls['house'].errors?.['required']">First Name is required</small>
-                        </div>
+                            <label class="form-label">House type</label>
+                            <select class="form-select " formControlName="house">
+                              <option value="" >Select House type</option>
+                              <option value="Own house">Own house</option>
+                              <option value="Rental house">Rental house</option>
+                              <option value="On lease">On lease</option>
+                            </select>
+                            <small class="text-danger" *ngIf="userForm.controls['house'].touched && userForm.controls['house'].errors?.['required']">Please select house type</small>
+                          </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Sibling's Marital status</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="siblingMarriage">
-                            <small class="text-danger" *ngIf="userForm.controls['siblingMarriage'].touched && userForm.controls['siblingMarriage'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your sibling's marital status" type="text" class="form-control" id="exampleInputEmail1" formControlName="siblingMarriage">
+                            <small class="text-danger" *ngIf="userForm.controls['siblingMarriage'].touched && userForm.controls['siblingMarriage'].errors?.['required']">Sibling's marital status is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['siblingMarriage'].touched && userForm.controls['siblingMarriage'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">DOB</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="dob">
-                            <small class="text-danger" *ngIf="userForm.controls['dob'].touched && userForm.controls['dob'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your dob" type="date" class="form-control" id="exampleInputEmail1" formControlName="dob">
+                            <small class="text-danger" *ngIf="userForm.controls['dob'].touched && userForm.controls['dob'].errors?.['required']">DOB is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['dob'].touched && userForm.controls['dob'].errors?.['dob']">DOB should be past date</small>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Gender</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="gender">
-                            <small class="text-danger" *ngIf="userForm.controls['gender'].touched && userForm.controls['gender'].errors?.['required']">First Name is required</small>
-                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Gender</label>
+                            <div>
+                              <input placeholder="Enter your name" type="radio" formControlName="gender" value="Male" /> Male
+                              <input placeholder="Enter your name" type="radio" formControlName="gender" value="Female" class="ms-3" /> Female
+                              <input placeholder="Enter your name" type="radio" formControlName="gender" value="Other" class="ms-3" /> Other
+                            </div>
+                            <small class="text-danger" *ngIf="userForm.controls['gender'].touched && userForm.controls['gender'].errors?.['required']">Please select gender</small>
+                          </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Educational Status</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="education">
-                            <small class="text-danger" *ngIf="userForm.controls['education'].touched && userForm.controls['education'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your educational status" type="text" class="form-control" id="exampleInputEmail1" formControlName="education">
+                            <small class="text-danger" *ngIf="userForm.controls['education'].touched && userForm.controls['education'].errors?.['required']">Educational status is required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Mothers Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="mothersName">
-                            <small class="text-danger" *ngIf="userForm.controls['mothersName'].touched && userForm.controls['mothersName'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your mother's name" type="text" class="form-control" id="exampleInputEmail1" formControlName="mothersName">
+                            <small class="text-danger" *ngIf="userForm.controls['mothersName'].touched && userForm.controls['mothersName'].errors?.['required']">Mother's Name is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['mothersName'].touched && userForm.controls['mothersName'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Phone number</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="phone">
-                            <small class="text-danger" *ngIf="userForm.controls['phone'].touched && userForm.controls['phone'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your phone number" type="text" class="form-control" id="exampleInputEmail1" formControlName="phone">
+                            <small class="text-danger" *ngIf="userForm.controls['phone'].touched && userForm.controls['phone'].errors?.['required']">Phone number is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['phone'].touched && userForm.controls['phone'].errors?.['minlength']">Phone number must be 10 digits</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Marital status</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="maritalStatus">
-                            <small class="text-danger" *ngIf="userForm.controls['maritalStatus'].touched && userForm.controls['maritalStatus'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your marital status" type="text" class="form-control" id="exampleInputEmail1" formControlName="maritalStatus">
+                            <small class="text-danger" *ngIf="userForm.controls['maritalStatus'].touched && userForm.controls['maritalStatus'].errors?.['required']">Marital status is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['maritalStatus'].touched && userForm.controls['maritalStatus'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         
                     </div>
@@ -88,58 +112,66 @@
                     <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Residential Address</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="resiAddress"></textarea>
-                            <small class="text-danger" *ngIf="userForm.controls['resiAddress'].touched && userForm.controls['resiAddress'].errors?.['required']">First Name is required</small>
+                            <textarea class="form-control" placeholder="Enter your residential address" id="exampleFormControlTextarea1" rows="4" formControlName="resiAddress"></textarea>
+                            <small class="text-danger" *ngIf="userForm.controls['resiAddress'].touched && userForm.controls['resiAddress'].errors?.['required']">Residential Address is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['resiAddress'].touched && userForm.controls['resiAddress'].errors?.['minlength']">Minimum 10 characters required</small>
                           </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Religion</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="religion">
-                            <small class="text-danger" *ngIf="userForm.controls['religion'].touched && userForm.controls['religion'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your religion" type="text" class="form-control" id="exampleInputEmail1" formControlName="religion">
+                            <small class="text-danger" *ngIf="userForm.controls['religion'].touched && userForm.controls['religion'].errors?.['required']">Religion is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['religion'].touched && userForm.controls['religion'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Job</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="job">
-                            <small class="text-danger" *ngIf="userForm.controls['job'].touched && userForm.controls['job'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your job" type="text" class="form-control" id="exampleInputEmail1" formControlName="job">
+                            <small class="text-danger" *ngIf="userForm.controls['job'].touched && userForm.controls['job'].errors?.['required']">Job is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['job'].touched && userForm.controls['job'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Salary</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="salary">
-                            <small class="text-danger" *ngIf="userForm.controls['salary'].touched && userForm.controls['salary'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your salary" type="text" class="form-control" id="exampleInputEmail1" formControlName="salary">
+                            <small class="text-danger" *ngIf="userForm.controls['salary'].touched && userForm.controls['salary'].errors?.['required']">Salary is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['salary'].touched && userForm.controls['salary'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Expectation</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="expectation">
-                            <small class="text-danger" *ngIf="userForm.controls['expectation'].touched && userForm.controls['expectation'].errors?.['required']">First Name is required</small>
+                            <input placeholder="Enter your expectation" type="text" class="form-control" id="exampleInputEmail1" formControlName="expectation">
+                            <small class="text-danger" *ngIf="userForm.controls['expectation'].touched && userForm.controls['expectation'].errors?.['required']">Expectation is required</small>
+                            <small class="text-danger" *ngIf="userForm.controls['expectation'].touched && userForm.controls['expectation'].errors?.['minlength']">Minimum 3 characters required</small>
                         </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Permanent Address</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="perAddress"></textarea>
-                                <small class="text-danger" *ngIf="userForm.controls['perAddress'].touched && userForm.controls['perAddress'].errors?.['required']">First Name is required</small>
+                                <textarea placeholder="Enter your permanent address" class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="perAddress"></textarea>
+                                <small class="text-danger" *ngIf="userForm.controls['perAddress'].touched && userForm.controls['perAddress'].errors?.['required']">Permanent Address is required</small>
+                                <small class="text-danger" *ngIf="userForm.controls['perAddress'].touched && userForm.controls['perAddress'].errors?.['minlength']">Minimum 10 characters required</small>
                               </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Caste</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="caste">
-                                <small class="text-danger" *ngIf="userForm.controls['caste'].touched && userForm.controls['caste'].errors?.['required']">First Name is required</small>
+                                <input placeholder="Enter your caste" type="text" class="form-control" id="exampleInputEmail1" formControlName="caste">
+                                <small class="text-danger" *ngIf="userForm.controls['caste'].touched && userForm.controls['caste'].errors?.['required']">Caste is required</small>
+                                <small class="text-danger" *ngIf="userForm.controls['caste'].touched && userForm.controls['caste'].errors?.['minlength']">Minimum 3 characters required</small>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Picture 01</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="pic01">
-                                <small class="text-danger" *ngIf="userForm.controls['pic01'].touched && userForm.controls['pic01'].errors?.['required']">First Name is required</small>
+                                <input placeholder="Enter your pic01 url" type="text" class="form-control" id="exampleInputEmail1" formControlName="pic01">
+                                <small class="text-danger" *ngIf="userForm.controls['pic01'].touched && userForm.controls['pic01'].errors?.['required']">Picture 01 is required</small>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Picture 02</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="pic02">
-                                <small class="text-danger" *ngIf="userForm.controls['pic02'].touched && userForm.controls['pic02'].errors?.['required']">First Name is required</small>
+                                <input placeholder="Enter your pic02 url" type="text" class="form-control" id="exampleInputEmail1" formControlName="pic02">
+                                <small class="text-danger" *ngIf="userForm.controls['pic02'].touched && userForm.controls['pic02'].errors?.['required']">Picture 02 is required</small>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Jadhagam PDF</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="jadhagam">
-                                <small class="text-danger" *ngIf="userForm.controls['jadhagam'].touched && userForm.controls['jadhagam'].errors?.['required']">First Name is required</small>
+                                <input placeholder="Enter your jadhagam pdf url" type="text" class="form-control" id="exampleInputEmail1" formControlName="jadhagam">
+                                <small class="text-danger" *ngIf="userForm.controls['jadhagam'].touched && userForm.controls['jadhagam'].errors?.['required']">Jadhagam is required</small>
                             </div>
                     </div>
-                    <div style="display: flex;justify-content: center;align-items: center;">
+                    <div class="mb-3" style="display: flex;justify-content: center;align-items: center;">
+                        <button class="btn btn-light me-3" style="width: 150px;border: 1px solid rgb(193, 192, 192);" type="reset">Reset</button>
                         <button class="btn btn-success" style="width: 150px;" type="submit">Submit</button>
                     </div>
                    
@@ -150,3 +182,7 @@
     </main>
     <app-user-footer></app-user-footer>
 </div>
+
+
+
+

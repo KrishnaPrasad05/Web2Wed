@@ -15,12 +15,12 @@ import { UserHeaderComponent } from './layouts/header/user-header/user-header.co
 import { UserFooterComponent } from './layouts/footer/user-footer/user-footer.component';
 import { AdminFooterComponent } from './layouts/footer/admin-footer/admin-footer.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ContactUsComponent } from './pages/contact-us/contact-us.component';
-import { ReportUsComponent } from './pages/report-us/report-us.component';
+import { ContactUsComponent } from './forms/contact-us/contact-us.component';
+import { ReportUsComponent } from './forms/report-us/report-us.component';
 import { CurrentProfileComponent } from './pages/current-profile/current-profile.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginPageComponent } from './forms/login-page/login-page.component';
 import { OpenPageComponent } from './pages/open-page/open-page.component';
 import { MatchMakingComponent } from './pages/match-making/match-making.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
@@ -28,7 +28,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
 import { ProfileDisplayComponent } from './pages/profile-display/profile-display.component';
 import { ProfileIntroComponent } from './pages/profile-intro/profile-intro.component';
 import { ProfileSearchComponent } from './pages/profile-search/profile-search.component';
-import { RegisterNowComponent } from './pages/register-now/register-now.component';
+import { RegisterNowComponent } from './forms/register-now/register-now.component';
 import { WaitingProfileComponent } from './pages/waiting-profile/waiting-profile.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.component';
